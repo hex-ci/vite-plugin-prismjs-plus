@@ -16,6 +16,13 @@ Prism.highlightAll();
 
 The exported `Prism` object will be the fully-configured Prism instance.
 
+### Type
+
+```ts
+// vite-env.d.ts
+/// <reference types="vite-plugin-prismjs-plus/client" />
+```
+
 ### Limitations
 
 - You must be using ES6 imports to load PrismJS.
