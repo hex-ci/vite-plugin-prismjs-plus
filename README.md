@@ -29,6 +29,14 @@ The exported `Prism` object will be the fully-configured Prism instance.
 
 ## Configuring the plugin
 
+### Install
+
+```bash
+npm install --save-dev vite-plugin-prismjs-plus
+```
+
+### Config
+
 ```js
 // vite.config.js
 import prismjsPlugin from 'vite-plugin-prismjs-plus'
