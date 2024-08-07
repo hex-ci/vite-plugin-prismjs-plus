@@ -1,5 +1,7 @@
 # vite-plugin-prismjs-plus
 
+[![npm version](https://badgen.net/npm/v/vite-plugin-prismjs-plus)](https://www.npmjs.com/package/vite-plugin-prismjs-plus)
+
 A Vite plugin to use PrismJS with standard bundlers.
 
 ## How to Use
