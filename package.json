@@ -20,7 +20,7 @@
   "homepage": "https://github.com/hex-ci/vite-plugin-prismjs-plus",
   "peerDependencies": {
     "prismjs": "^1.29.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0 || ^6.0.0"
   },
   "devDependencies": {
     "prismjs": "^1.29.0",
