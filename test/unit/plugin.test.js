@@ -261,3 +261,46 @@ describe('load hook — output structure', () => {
     );
   });
 });
+
+// ─── Group 11: load hook — languages + plugins combined ───────────────────
+
+describe('load hook — languages + plugins combined', () => {
+  it('getLoader receives both languages and plugins merged into one array', () => {
+    const plugin = prismjsPlugin({ languages: ['javascript'], plugins: ['line-numbers'] });
+    plugin.configResolved({ root: '' });
+    plugin.load('\0virtual:prismjs');
+    expect(getLoader).toHaveBeenCalledWith(
+      mockComponents,
+      expect.arrayContaining(['javascript', 'line-numbers'])
+    );
+    expect(getLoader.mock.calls[0][1]).toHaveLength(2);
+  });
+
+  it('output contains both language JS and plugin CSS when css:true', () => {
+    mockGetIds.mockReturnValue(['javascript', 'line-numbers']);
+    const plugin = prismjsPlugin({ languages: ['javascript'], plugins: ['line-numbers'], css: true, theme: '' });
+    plugin.configResolved({ root: '' });
+    const output = plugin.load('\0virtual:prismjs');
+    expect(output).toContain('/* content of');
+    expect(output).toContain("import 'prismjs/plugins/line-numbers/prism-line-numbers.css'");
+  });
+
+  it('languages: "all" + plugins still passes all languages and plugins to getLoader', () => {
+    const plugin = prismjsPlugin({ languages: 'all', plugins: ['line-numbers'] });
+    plugin.configResolved({ root: '' });
+    plugin.load('\0virtual:prismjs');
+    const callArgs = getLoader.mock.calls[0][1];
+    const allLangs = Object.keys(mockComponents.languages).filter(k => k !== 'meta');
+    expect(callArgs).toEqual(expect.arrayContaining([...allLangs, 'line-numbers']));
+    expect(callArgs).not.toContain('meta');
+  });
+
+  it('empty languages + plugins still loads plugins', () => {
+    mockGetIds.mockReturnValue(['line-numbers']);
+    const plugin = prismjsPlugin({ languages: [], plugins: ['line-numbers'], css: true, theme: '' });
+    plugin.configResolved({ root: '' });
+    const output = plugin.load('\0virtual:prismjs');
+    expect(getLoader).toHaveBeenCalledWith(mockComponents, ['line-numbers']);
+    expect(output).toContain("import 'prismjs/plugins/line-numbers/prism-line-numbers.css'");
+  });
+});
