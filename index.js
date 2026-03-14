@@ -47,11 +47,11 @@ export default function prismjsPlugin({ manual = false, languages = [], plugins 
 
     load(id) {
       if (id === resolvedVirtualModuleId) {
-        if (languages === 'all') {
-          languages = Object.keys(components.languages).filter(item => item !== 'meta');
-        }
+        const resolvedLanguages = languages === 'all'
+          ? Object.keys(components.languages).filter(item => item !== 'meta')
+          : languages;
 
-        const dependencies = getLoader(components, [...languages, ...plugins]).getIds().reduce((deps, dep) => {
+        const dependencies = getLoader(components, [...resolvedLanguages, ...plugins]).getIds().reduce((deps, dep) => {
           deps.js.push((isPlugin(dep) ? getPath('plugins', dep) : getPath('languages', dep)) + '.js');
 
           if (css && isPlugin(dep) && !getNoCSS('plugins', dep)) {

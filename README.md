@@ -2,7 +2,7 @@
 
 [![npm version](https://badgen.net/npm/v/vite-plugin-prismjs-plus)](https://www.npmjs.com/package/vite-plugin-prismjs-plus)
 
-A Vite plugin to use PrismJS with standard bundlers.
+A Vite plugin to use PrismJS with standard bundlers. Supports Vite 5, 6, 7, and 8.
 
 ## How to Use
 
@@ -70,10 +70,10 @@ export default {
 }
 ```
 
-Each key are used as follows:
+Each key is used as follows:
 
 * `manual`: Boolean indicating whether to use Prism functions manually. Defaults to `false`.
-* `languages`: Array of languages to include in the bundle or `"all"` to include all languages. Those languages can be found [here](http://prismjs.com/#languages-list).
+* `languages`: Array of languages to include in the bundle, or `"all"` to include all languages. Those languages can be found [here](http://prismjs.com/#languages-list).
 * `plugins`: Array of plugins to include in the bundle. Those plugins can be found [here](http://prismjs.com/#plugins).
-* `theme`: Name of theme to include in the bundle. Themes can be found [here](http://prismjs.com/).
+* `theme`: Name of theme to include in the bundle. Themes can be found [here](http://prismjs.com/). To use a theme from a third-party package, use the `package/theme-name` syntax (e.g. `'my-pkg/ocean'` resolves to `my-pkg/themes/prism-ocean.css`).
 * `css`: Boolean indicating whether to include `.css` files in the result. Defaults to `false`. If `true`, `import`s will be added for `.css` files. Must be `true` in order for `theme` to work.
