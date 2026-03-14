@@ -1,6 +1,7 @@
 # vite-plugin-prismjs-plus
 
 [![npm version](https://badgen.net/npm/v/vite-plugin-prismjs-plus)](https://www.npmjs.com/package/vite-plugin-prismjs-plus)
+[![codecov](https://codecov.io/github/hex-ci/vite-plugin-prismjs-plus/graph/badge.svg?token=IVQXCCQ8N6)](https://codecov.io/github/hex-ci/vite-plugin-prismjs-plus)
 
 A Vite plugin to use PrismJS with standard bundlers. Supports Vite 5, 6, 7, and 8.
 
